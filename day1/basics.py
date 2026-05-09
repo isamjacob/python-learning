@@ -344,3 +344,189 @@ elif amount > 1000:
 else:
     print("No discount available")
     print(f"Amount to be paid: ₹{amount}")
+
+
+# LOOPS
+# For and while 
+
+# Use for - when you know how many times repeat
+# Use while - when we need to repeat until the condition becomes false
+# Basic loop
+
+for i in range (5): # prints: 0 1 2 3 4
+    print (i)       # range(5) starts from 0 by default
+
+# What is range 
+
+# Range 
+
+# In Python, range() is a built-in function used to generate a sequence of integers.
+
+range (5)   # Print digit from 0 to 4
+range (1,6) # Print digit from 1 to 5
+range (0,11,2)  # Print digit form 0 to 11 with difference of 2... 0,2,4,6,8,10
+range (10,0,-1) # Print digit form 10 to 1
+
+# Range(Start, stop, step)
+
+# looping through srting
+
+for char in "Python":
+    print(char)        # Prints each letter on a new line 
+
+# Loop through a list
+fruits = ["apple", "banana", "mango"]
+for fruit in fruits:
+    print(fruit)
+
+# Loop with index using enumerate 
+for index, fruit in enumerate(fruits):
+    print(f"{index}: {fruit}")
+    # 0: apple
+    # 1: banana
+    # 2: mango
+
+# While loop
+
+# Basic while loop
+count = 1
+while count <= 5:
+    print(f"Count: {count}")
+    count += 1
+
+# Real life example ATM PIN Checker
+correct_pin = "1234"
+attempts = 0
+
+while attempts < 3:
+    pin = input("Enter pin: ")
+    if pin == correct_pin:
+        print("Access granted!")
+        break # Exit loop immediatly
+    else:
+        attempts += 1
+        remaining = 3 - attempts
+        if remaining > 0:
+            print(f"Wrong PIN. {remaining} attempts left.")
+
+if attempts == 3:
+    print("Card blocked!")
+
+
+# Break and Continue statement
+# Break - exits loop immediatly
+# continue - skips the current iteration and keep going
+
+# Break example
+
+for i in range(10):
+    if i == 5:
+        break # stops when i reaches 5
+    print(i) # prints: 0, 1, 2, 3, 4
+
+# Continue example
+for i in range(10):
+    if i % 2 == 0:
+        continue  # Skips even numbers
+    print(i) # prints: 1, 3, 5, 7, 9
+
+# Useful loop patterns 
+
+# Pattern 1 - collecting results in a list
+squares = []
+for i in range(1,6):
+    squares.append(i**2)
+print(squares) # [1, 4, 9, 16, 25]
+
+# Pattern 2 - summing numbers
+total = 0
+for i in range(1,101):
+    total += i
+print(f"Sum 1-100: {total}")    # 5050
+
+# pattern 3 - finding something
+numbers = [3, 7, 2, 9, 1, 5]
+largest = numbers[0]
+for num in numbers:
+    if num > largest:
+        largest = num
+print(f"Largest: {largest}")    # 9
+
+# Pattern 4 - counting occurrences
+sentence = "hello world how are you"
+count = 0
+for char in sentence:
+    if char == "o":
+        count += 1
+print(f"Letter 'o' appears {count} times")
+
+# Exercise 1
+
+# Ask user for a number
+# Print its multiplication table from 1 to 10
+# Output should look like:
+# 5 x 1 = 5
+# 5 x 2 = 10
+# ...
+# 5 x 10 = 50
+
+num = int(input("Enter your number: "))
+for i in range(1,11):
+    a = num * i
+    print(f"{num} x {i} = {a}")
+
+# Exercise 2
+
+# Print this pattern using loops:
+# *
+# **
+# ***
+# ****
+# *****
+
+height = int(input("Enter the height of the triangle: "))
+
+for i in range(1,height + 1):
+    print("*" * i)
+
+# Exercise 3
+
+# Secret number is 7
+# Keep asking user to guess
+# If guess is too high → print "Too high!"
+# If guess is too low  → print "Too low!"
+# If correct → print "Correct! You got it in X attempts!" and stop
+
+secret_number = 7
+attempts_1= 0
+
+while True:
+    guess = int(input("Enter your guess: "))
+    attempts_1 += 1
+
+    if guess > secret_number:
+        print("Too high!")
+    elif guess < secret_number:
+        print("Too low!")
+    else:
+        print(f"Correct! You got it in {attempts_1} attempts!")
+        break
+
+# Exercise 4 - FizzBuzz
+
+# Print numbers 1 to 50
+# But:
+# If divisible by 3 → print "Fizz"
+# If divisible by 5 → print "Buzz"
+# If divisible by both → print "FizzBuzz"
+# Otherwise → print the number
+
+for i in range(1,51):       # Range
+    if i % 3 == 0 and i % 5 == 0: # Checking conditions
+        print("FizzBuzz")
+    elif i % 3 == 0:
+        print("Fizz")
+    elif i % 5 == 0:
+        print("Buzz")
+    else:
+        print(i)
