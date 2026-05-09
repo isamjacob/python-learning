@@ -530,3 +530,178 @@ for i in range(1,51):       # Range
         print("Buzz")
     else:
         print(i)
+
+# Functions
+
+# functions are of two types build in and user defined
+# build in are print(), input(), int(), len(), range() etc
+
+# without functions we need to write same thing every time we need 
+# with function we can just call the function whenever we need 
+
+# Write Once Use Anywhere
+
+# Structure of a funcction
+
+# def function_name(parameters):
+#     # code here
+#     return result
+
+# def — keyword that defines a function
+# function_name — what you call it (snake_case)
+# parameters — inputs the function receives (optional)
+# return — output the function gives back (optional)
+
+# Different types of functions
+
+# Type 1: No parameters, no return 
+
+def greet():
+    print("Hello Welcome to Python.")
+
+greet() # calling the function
+greet() # call it again - reusable!
+greet() # and again!
+
+# Type 2: With parameters
+
+# parameters are the input you pass in 
+def greet_user(name, age):
+    print(f"Hello {name}! You are {age} years old.")
+
+greet_user("Sam", 22)   # name="Sam", age=22
+greet_user("priya", 19) # name="Priya", age=19 
+greet_user("Rahul", 25) # name="Rahul", age=25 
+
+# parameter vs argurment
+
+# def greet_user(name, age): # name, age  are PARAMETERS (Defined in the function)
+
+# greet_user("Sam", 22)   # "Sam", 22 are ARGURMENTS (Passed when calling)
+
+# With Return Value
+
+# return sends a value BACK to whoever called the function
+def add(a,b):
+    result = a + b
+    return result
+
+# The returned value can be stored or used directly
+total = add(5,3)
+print(total)            # 8
+print(add(10,20))       # 30
+print(add(100, 200))    # 300
+
+# what happens withou return
+
+def add_no_return(a, b):
+    result = a + b
+    # no return!
+
+value = add_no_return(5,3)
+print(value)    # None function returned nothing
+
+# Type 4 default parameters
+
+# Default value used when argurment not provided 
+def greet_with_title(name, title = "Mr"):
+    print(f"Hello, {title}. {name}!")
+
+greet_with_title("Sharma")           # Hello, Mr. Sharma!
+greet_with_title("Priya", "Ms")      # Hello, Ms. Priya!
+greet_with_title("Kumar", "Dr")      # Hello, Dr. Kumar!
+
+# Type 5 Multiple return values 
+
+# Python can return multiple values at once 
+def get_stats(numbers):
+    total = sum(numbers)
+    average = total / len(numbers)
+    largest = max(numbers)
+    smallest = min(numbers)
+    return total, average, largest, smallest 
+
+# Unpack all 4 returned values
+
+total, avg, high, low = get_stats([10, 20, 30, 40, 50])
+print(f"Total: {total}")
+print(f"Average: {avg}")
+print(f"Highest: {high}")
+print(f"Lowest: {low}")         # Here python does't care about names it checks the position
+
+# Exercise 1 
+
+# Write a function is_even(n)
+# Returns True if n is even, False if odd
+# Test: is_even(4) → True
+#       is_even(7) → False
+
+def is_even(num):
+    if num % 2 == 0:
+        return True
+    else:
+        return False
+    
+# Exercise 2 
+
+# Write a function calculator(a, b, operation)
+# operation can be: "add", "subtract", "multiply", "divide"
+# Return the result
+# calculator(10, 2, "divide")   → 5.0
+# calculator(5, 3, "add")       → 8
+# calculator(10, 3, "subtract") → 7
+
+def calculator(a, b, operation):
+    if operation == "divide":
+        result = a/b
+        return result
+    elif operation == "add":
+        result = a + b
+        return result
+    elif operation == "multiply":
+        result = a * b 
+        return result
+    elif operation == "subtract":
+        result = a - b
+        return result
+    else:
+        print("Enter valid operetion from add or subtract or multiply or divide")
+
+# Exercise 3 String function
+
+# Write a function check_palindrome(word)
+# A palindrome reads same forwards and backwards
+# "racecar" → True
+# "hello"   → False
+# Hint: word == word[::-1]  reverses a string
+
+def check_palindrome(word):
+    if word == word[::-1]:
+        return True
+    else:
+        return False
+    
+# Exercise 4
+# Write a function calculate_bmi(weight_kg, height_m)
+# BMI = weight / (height * height)
+# If BMI < 18.5  → print "Underweight"
+# If BMI < 25    → print "Normal"
+# If BMI < 30    → print "Overweight"
+# else           → print "Obese"
+# Also return the BMI value
+
+def calculate_bmi(weight_kg, height_m):
+    bmi = weight_kg/(height_m * height_m)
+
+    if bmi < 18.5:
+        print("Underweight")
+        return bmi
+    elif bmi < 25:
+        print("Normal")
+        return bmi
+    elif bmi < 30:
+        print("Overweight")
+        return bmi
+    else:
+        print("Obese")
+        return bmi
