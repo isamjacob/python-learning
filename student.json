@@ -1,0 +1,12 @@
+{
+    "name": "Sam",
+    "age": 22,
+    "city": "Mumbai",
+    "marks": 85,
+    "skills": [
+        "Python",
+        "Git",
+        "Linux"
+    ],
+    "is_employed": false
+}
