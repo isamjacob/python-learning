@@ -186,3 +186,33 @@ print(get_first_last(numbers))
 print(find_max(numbers))
 print(bubble_sort(numbers.copy()))
 print(binary_search([1, 2, 3, 5, 8, 9], 5))
+
+# Practice problems
+
+# Problem 1 - Sum of all numbers in a list
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+total = sum(numbers)
+print(f"Sum: {total}")
+
+# Problem 2 - Find all even numbers
+evens = [n for n in numbers if n % 2 == 0]
+print(f"Evens: {evens}")
+
+# Problem 3 - Reverse a list
+reversed_list = numbers[::-1]
+print(f"Reversed: {reversed_list}")
+
+# Problem 4 - Count occurrences
+words = ["python", "java", "python", "c++", "python", "java"]
+counts = {}
+for word in words:
+    counts[word] = counts.get(word, 0) + 1
+print(f"Counts: {counts}")
+
+# Problem 5 - Find duplicates
+nums = [1, 2, 3, 2, 4, 3, 5]
+duplicates = set()
+for n in nums:
+    if nums.count(n) > 1:
+        duplicates.add(n)
+print(f"Duplicates: {duplicates}")
