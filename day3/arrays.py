@@ -166,3 +166,56 @@ def two_sum(numbers, target):
 
 print(two_sum([2, 7, 11, 15], 9))    # [0, 1]
 print(two_sum([3, 2, 4], 6))         # [1, 2]
+
+# Exercise 1
+# Input:  [1, 2, 3, 2, 4, 3, 5]
+# Output: [2, 3]
+
+def find_duplicates(numbers):
+    counts = {}
+    duplicates = []
+
+    for num in numbers:
+        counts[num] = counts.get(num, 0) + 1
+
+    for num, count in counts.items():
+        if count > 1:
+            duplicates.append(num)
+
+    return duplicates
+
+print(find_duplicates([1, 2, 3, 2, 4, 3, 5]))  # [2, 3]
+
+# Exercise 2
+
+# Input:  [0, 1, 0, 3, 12]
+# Output: [1, 3, 12, 0, 0]
+
+def move_zeros(numbers):
+    left = 0   # tracks where next non-zero goes
+
+    for right in range(len(numbers)):
+        if numbers[right] != 0:
+            numbers[left], numbers[right] = numbers[right], numbers[left]
+            left += 1
+
+    return numbers
+
+print(move_zeros([0, 1, 0, 3, 12]))  # [1, 3, 12, 0, 0]
+
+# Exercise 3
+
+# Input:  [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+# Output: 6  (subarray [4, -1, 2, 1])
+
+def max_subarray(numbers):
+    current_sum = numbers[0]
+    max_sum = numbers[0]
+
+    for num in numbers[1:]:
+        current_sum = max(num, current_sum + num)
+        max_sum = max(max_sum, current_sum)
+
+    return max_sum
+
+print(max_subarray([-2, 1, -3, 4, -1, 2, 1, -5, 4]))  # 6
