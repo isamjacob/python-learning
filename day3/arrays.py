@@ -219,3 +219,51 @@ def max_subarray(numbers):
     return max_sum
 
 print(max_subarray([-2, 1, -3, 4, -1, 2, 1, -5, 4]))  # 6
+
+
+# DSA Thinking Framework
+
+# Pattern 1: HashMap - Count frequency
+def most_frequent(numbers):
+    counts = {}
+    for num in numbers:
+        counts[num] = counts.get(num, 0) + 1
+    return max(counts, key=counts.get)
+
+# Pattern 2: Two Pointers - Find pair with target sum
+def two_sum_sorted(numbers, target):
+    left = 0
+    right = len(numbers) - 1
+    while left < right:
+        current = numbers[left] + numbers[right]
+        if current == target:
+            return [left, right]
+        elif current < target:
+            left += 1
+        else:
+            right -= 1
+    return []
+
+# Pattern 3: Sliding Window - Max sum subarray of size k
+def max_window_sum(numbers, k):
+    window_sum = sum(numbers[:k])
+    max_sum = window_sum
+    for i in range(k, len(numbers)):
+        window_sum += numbers[i] - numbers[i-k]
+        max_sum = max(max_sum, window_sum)
+    return max_sum
+
+# Pattern 4: Running calculation - Kadane's
+def max_subarray(numbers):
+    current = numbers[0]
+    best = numbers[0]
+    for num in numbers[1:]:
+        current = max(num, current + num)
+        best = max(best, current)
+    return best
+
+# Testing all patterns
+print("Most frequent:", most_frequent([1,2,3,2,4,2,3]))
+print("Two sum:", two_sum_sorted([1,2,3,4,6], 6))
+print("Max window:", max_window_sum([1,3,-1,-3,5,3,6,7], 3))
+print("Max subarray:", max_subarray([-2,1,-3,4,-1,2,1,-5,4]))
