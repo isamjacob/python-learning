@@ -267,3 +267,29 @@ print("Most frequent:", most_frequent([1,2,3,2,4,2,3]))
 print("Two sum:", two_sum_sorted([1,2,3,4,6], 6))
 print("Max window:", max_window_sum([1,3,-1,-3,5,3,6,7], 3))
 print("Max subarray:", max_subarray([-2,1,-3,4,-1,2,1,-5,4]))
+
+# Given an array of integers arr and an integer k, find the maximum sum of any contiguous subarray of size k.
+
+# A contiguous subarray contains elements that are next to each other in the array.
+
+def max_subarray_sum(arr, k):
+
+    # Calculate sum of first window
+    window_sum = sum(arr[:k])
+    max_sum = window_sum
+
+    # Slide the window
+    for i in range(k, len(arr)):
+
+        window_sum = window_sum - arr[i - k] + arr[i]
+
+        max_sum = max(max_sum, window_sum)
+
+    return max_sum
+
+
+# Driver Code
+arr = [2, 1, 5, 1, 3, 2]
+k = 3
+
+print("Maximum subarray sum =", max_subarray_sum(arr, k))
